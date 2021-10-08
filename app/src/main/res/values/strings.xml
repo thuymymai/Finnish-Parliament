@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Finnish Parliament</string>
+    <string name="minister">Minister</string>
+    <string name="member">Member of Finnish Parliament</string>
+    <string name="name">%1$s %2$s</string>
+    <string name="age">Age: %1$d</string>
+    <string name="constituency">Constituency: %1$s</string>
+    <string name="party">Party: %1$s</string>
+    <string name="random">Random</string>
+    <string name="rating">%.1f</string>
+    <string name="fragment">Comment: %1$s</string>
+    <string name="button1">Submit</string>
+    <string name="button2">To Member Info Fragment</string>
+    <string name="editText">Write some comments..</string>
+</resources>
