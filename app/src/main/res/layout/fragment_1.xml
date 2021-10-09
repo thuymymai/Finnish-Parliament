@@ -19,13 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-            <TextView
-                android:id="@+id/textFragment1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{partyViewModel.response}" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
     </FrameLayout>

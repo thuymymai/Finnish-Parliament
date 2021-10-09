@@ -49,5 +49,4 @@ class MemberRepo(val context: Context) {
     fun getMemberByPersonNum(key: Int): LiveData<ParliamentMember> = memberDao.getByPersonNum(key)
     fun getMemberByParty(key: String): LiveData<List<ParliamentMember>> = memberDao.getByParty(key)
     fun getAllParties(): LiveData<List<String>> = memberDao.getParty()
-
 }

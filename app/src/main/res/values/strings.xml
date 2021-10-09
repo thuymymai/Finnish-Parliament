@@ -12,4 +12,16 @@
     <string name="button1">Submit</string>
     <string name="button2">To Member Info Fragment</string>
     <string name="editText">Write some comments..</string>
+    <string name="finnish_party">Finnish Party</string>
+    <string name="sd">Social Democratic Party</string>
+    <string name="ps">Finns Party</string>
+    <string name="kd">Christian Democrats</string>
+    <string name="kesk">Centre Party</string>
+    <string name="kok">National Coalition Party</string>
+    <string name="vas">Left Alliance</string>
+    <string name="r">Swedish People Party</string>
+    <string name="vihr">Green League</string>
+    <string name="liik">Movement Now</string>
+    <string name="aboutTitle">About</string>
+    <string name="about">The Parliament of Finland is the unicameral and supreme legislature of Finland, founded on 9 May 1906. In accordance with the Constitution of Finland, sovereignty belongs to the people, and that power is vested in the Parliament. The Parliament consists of 200 members, 199 of whom are elected every four years. The most recent parliamentary election took place on 14 April 2019. The Social Democratic Party, the Centre Party, the Green League, the Left Alliance, and the Swedish People Party cooperated to form the Rinne Cabinet, a centre-left coalition government. This was succeeded in December 2019 by the Marin Cabinet which is made up of the same parties. This application shows details about each party and members of Finnish Parliament.</string>
 </resources>

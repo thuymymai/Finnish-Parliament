@@ -9,20 +9,27 @@
             type="com.example.parliamentmembers.adapters.PartyListListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:orientation="vertical"
+        android:background="@drawable/custom_border">
+
+        <ImageView
+            android:id="@+id/partyImage"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:id="@+id/party_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textSize="24sp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="26sp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+    </LinearLayout>
 </layout>

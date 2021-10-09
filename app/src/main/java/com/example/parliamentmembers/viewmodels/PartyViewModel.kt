@@ -16,7 +16,6 @@ class PartyViewModel(application: Application) :
     private val _parties: LiveData<List<String>>
     private val _response = MutableLiveData<String>()
     private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     private val repo = MemberRepo(application)
 
     val response: LiveData<String>

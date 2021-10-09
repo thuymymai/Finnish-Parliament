@@ -62,7 +62,7 @@ class MembersInfoFragment : Fragment() {
                             Glide.with(it1)
                                 .load("https://avoindata.eduskunta.fi/" + member.picture)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .into(partyLogo)
+                                .into(memberImage)
                         }
                         binding.ratingBar1.setOnRatingBarChangeListener { p0, _, _ ->
                             coroutineScope.launch {
