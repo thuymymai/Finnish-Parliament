@@ -10,11 +10,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MemberRepo(val context: Context) {
     private lateinit var memberDao: MemberDao
-    //private lateinit var ratingDao: RatingDao
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Default)
 
@@ -35,14 +33,11 @@ class MemberRepo(val context: Context) {
                 val mps = listResult as MutableList<ParliamentMember>
                 mps.forEach { (MemberDB.getInstance(context).memberDatabaseDao.insert(it)) }
             } catch (e: Exception) {
-                Timber.i(e.message ?: "Nothing")
+                Log.i("e", e.message ?: "Nothing")
             }
         }
     }
 
-    /*fun insertRating(rating: Rating){
-        MemberDB.getInstance(context).ratingDao.insert(rating)
-    }*/
     fun getRatingAvgByPersonNum(key: Int): LiveData<Float> = MemberDB.getInstance(context).ratingDao.getSumByPersonNum(key)
     fun getCommentByPersonNum(key: Int): LiveData<List<Comment>> = MemberDB.getInstance(context).commentDao.getCommentByPersonNum(key)
     fun getRatingByPersonNum(key: Int): LiveData<Rating> = MemberDB.getInstance(context).ratingDao.getByPersonNum(key)

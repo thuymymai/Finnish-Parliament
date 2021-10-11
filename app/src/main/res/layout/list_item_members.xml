@@ -4,29 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="member"
             type="com.example.parliamentmembers.roomdb.ParliamentMember" />
+
         <variable
             name="clickListener"
             type="com.example.parliamentmembers.adapters.MemberListListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(member)}">
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custom_border"
+        android:onClick="@{() -> clickListener.onClick(member)}"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/member_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+        <ImageView
+            android:id="@+id/memberListImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textSize="24sp"
-            android:text="@{member.first + ' ' + member.last}"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/member_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"
+                android:paddingTop="5dp"
+                android:text="@{member.first + ' ' + member.last}"
+                android:textAlignment="viewStart"
+                android:textColor="#002F6C"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/constituency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"
+                android:textAlignment="viewStart"
+                android:textColor="#767676"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
 </layout>

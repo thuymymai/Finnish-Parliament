@@ -1,11 +1,13 @@
 package com.example.parliamentmembers.fragments
 
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,10 +22,12 @@ import com.example.parliamentmembers.roomdb.Comment
 import com.example.parliamentmembers.roomdb.MemberDB
 import com.example.parliamentmembers.roomdb.Rating
 import com.example.parliamentmembers.viewmodels.MemberDetailViewModel
+import kotlinx.android.synthetic.main.list_comments.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 class MembersInfoFragment : Fragment() {
@@ -62,6 +66,7 @@ class MembersInfoFragment : Fragment() {
                             Glide.with(it1)
                                 .load("https://avoindata.eduskunta.fi/" + member.picture)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .circleCrop()
                                 .into(memberImage)
                         }
                         binding.ratingBar1.setOnRatingBarChangeListener { p0, _, _ ->
@@ -90,8 +95,23 @@ class MembersInfoFragment : Fragment() {
                                     )
                                 }
                             }
+
+                            try {
+                                val imm: InputMethodManager =
+                                    activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                                imm.hideSoftInputFromWindow(
+                                    activity?.currentFocus!!.windowToken, 0)
+                            } catch (e: Exception) {
+                                Log.i("e", error(e))
+                            }
                             binding.commentEditText.text = null
                         }
+
+
+
+
+                        if (member.minister) minister.text =
+                            getString(R.string.minister) else minister.text = getString(R.string.member)
                         name.text = getString(R.string.name, member.first, member.last)
                         if (member != null) {
                             age.text = getString(R.string.age, 2021 - member.bornYear)
@@ -120,6 +140,13 @@ class MembersInfoFragment : Fragment() {
                                 }
                             })
 
+                        /*binding.listComments.deleteButton.setOnClickListener{
+                            coroutineScope.launch {
+                                context?.let { it1 ->
+                                    MemberDB.getInstance(it1).commentDao.deleteComment(commentAdapter.)
+                                }
+                            }*/
+                        invalidateAll()
                     }
                 }
             })
@@ -130,40 +157,4 @@ class MembersInfoFragment : Fragment() {
     }
 
 }
-
-/*private fun randomMember() {
-val random = Random().nextInt(ParliamentMembersData.members.size)
-binding.apply {
-    //check if this random member is a minister
-    if (ParliamentMembersData.members[random].minister) minister.text =
-        getString(R.string.minister) else minister.text = getString(R.string.member)
-    name.text = getString(
-        R.string.name,
-        ParliamentMembersData.members[random].first,
-        ParliamentMembersData.members[random].last
-    )
-    age.text =
-        getString(R.string.age, 2021 - ParliamentMembersData.members[random].bornYear)
-    constituency.text = getString(
-        R.string.constituency,
-        ParliamentMembersData.members[random].constituency
-    )
-    party.text = getString(R.string.party, ParliamentMembersData.members[random].party)
-    invalidateAll()
-
-    //set logo for parties
-    when (ParliamentMembersData.members[random].party) {
-        "sd" -> partyLogo.setImageResource(R.drawable.sd)
-        "ps" -> partyLogo.setImageResource(R.drawable.ps)
-        "kd" -> partyLogo.setImageResource(R.drawable.kd)
-        "kesk" -> partyLogo.setImageResource(R.drawable.kesk)
-        "kok" -> partyLogo.setImageResource(R.drawable.kok)
-        "r" -> partyLogo.setImageResource(R.drawable.r)
-        "vas" -> partyLogo.setImageResource(R.drawable.vas)
-        "vihr" -> partyLogo.setImageResource(R.drawable.vihr)
-        "liik" -> partyLogo.setImageResource(R.drawable.liik)
-    }
-
-}
-}*/
 

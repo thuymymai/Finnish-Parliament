@@ -4,23 +4,16 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.parliamentmembers.api.RetrofitInstance.api
 import com.example.parliamentmembers.repositories.MemberRepo
 import kotlinx.coroutines.*
-import timber.log.Timber
 
 
 class PartyViewModel(application: Application) :
     AndroidViewModel(application) {
 
     private val _parties: LiveData<List<String>>
-    private val _response = MutableLiveData<String>()
     private var viewModelJob = Job()
     private val repo = MemberRepo(application)
-
-    val response: LiveData<String>
-        get() = _response
-
     val parties: LiveData<List<String>>
         get() = _parties
 

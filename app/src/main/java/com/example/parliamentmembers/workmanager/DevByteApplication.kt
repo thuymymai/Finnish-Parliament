@@ -8,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-import com.example.parliamentmembers.workmanager.RefreshDataWorker
 
 class DevByteApplication : Application() {
     private val applicationScope = CoroutineScope(Dispatchers.Default)

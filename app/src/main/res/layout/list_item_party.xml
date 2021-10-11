@@ -28,8 +28,10 @@
             android:id="@+id/party_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26sp"
             android:layout_gravity="center"
-            android:textAlignment="center"/>
+            android:fontFamily="@font/amethysta"
+            android:textAlignment="center"
+            android:textColor="#002F6C"
+            android:textSize="26sp" />
     </LinearLayout>
 </layout>

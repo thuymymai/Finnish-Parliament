@@ -15,7 +15,7 @@ interface MemberDao {
     @Query("SELECT DISTINCT party from parliament_members_table")
     fun getParty(): LiveData<List<String>>
 
-    @Query("SELECT * from parliament_members_table where party == :key")
+    @Query("SELECT * from parliament_members_table where party == :key order by first ASC")
     fun getByParty(key: String): LiveData<List<ParliamentMember>>
 
     @Query("SELECT * from parliament_members_table where personNumber == :key")
@@ -54,4 +54,6 @@ interface CommentDao {
     @Query("SELECT * FROM comment_table where personNum == :key")
     fun getCommentByPersonNum(key: Int): LiveData<List<Comment>>
 
+    @Delete
+    fun deleteComment(comment: Comment)
 }

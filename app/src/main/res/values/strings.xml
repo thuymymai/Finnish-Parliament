@@ -7,7 +7,7 @@
     <string name="constituency">Constituency: %1$s</string>
     <string name="party">Party: %1$s</string>
     <string name="random">Random</string>
-    <string name="rating">%.1f</string>
+    <string name="rating">0.0</string>
     <string name="fragment">Comment: %1$s</string>
     <string name="button1">Submit</string>
     <string name="button2">To Member Info Fragment</string>

@@ -3,17 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/button.xml" value="0.26145833333333335" />
         <entry key="app/src/main/res/drawable/custom_border.xml" value="0.18703703703703703" />
         <entry key="app/src/main/res/drawable/text_style.xml" value="0.26145833333333335" />
         <entry key="app/src/main/res/layout-v21/members_info_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/fragment_1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_2.xml" value="0.1017912883297854" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/list_comments.xml" value="0.16576086956521738" />
+        <entry key="app/src/main/res/layout/list_comments.xml" value="0.375" />
         <entry key="app/src/main/res/layout/list_item_members.xml" value="0.13043478260869565" />
         <entry key="app/src/main/res/layout/list_item_party.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/members_info_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/members_info_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/members_info_fragmnet.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/opening_screen.xml" value="0.26536312849162014" />
         <entry key="app/src/main/res/layout/text_item_view.xml" value="0.11627906976744186" />

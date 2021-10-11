@@ -1,14 +1,12 @@
 package com.example.parliamentmembers.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -17,9 +15,7 @@ import com.example.parliamentmembers.adapters.PartyAdapter
 import com.example.parliamentmembers.adapters.PartyListListener
 import com.example.parliamentmembers.databinding.Fragment1Binding
 import com.example.parliamentmembers.viewmodels.PartyViewModel
-import kotlinx.android.synthetic.main.list_item_party.*
-import kotlinx.android.synthetic.main.members_info_fragment.*
-import timber.log.Timber
+
 
 class PartyFragment : Fragment() {
     override fun onCreateView(
