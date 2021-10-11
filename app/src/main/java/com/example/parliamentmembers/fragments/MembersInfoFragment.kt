@@ -14,29 +14,18 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.adapters.CommentAdapter
 import com.example.parliamentmembers.databinding.MembersInfoFragmentBinding
-import com.example.parliamentmembers.roomdb.Comment
-import com.example.parliamentmembers.roomdb.MemberDB
-import com.example.parliamentmembers.roomdb.Rating
 import com.example.parliamentmembers.viewmodels.MemberDetailViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /*Name: My Mai, student ID: 2012197
 This Fragment observes the changes in the LiveData object of MemberDetailViewModel
 From that update information of each member including rating and comment for each.
-Basically it does not hold and business logic and data
-but I still add rating and comment for each member from here
 Date: 06/10/2021
 */
 
 class MembersInfoFragment : Fragment() {
 
     private lateinit var binding: MembersInfoFragmentBinding
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Default)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +35,7 @@ class MembersInfoFragment : Fragment() {
             R.layout.members_info_fragment, container, false
         )
 
-        //call instance of viewmodel
+        //call instance of view model
         val memberDetailViewModel =
             ViewModelProvider(
                 this
@@ -54,11 +43,11 @@ class MembersInfoFragment : Fragment() {
 
         binding.memberDetailViewModel = memberDetailViewModel
 
-        //get data from bundle sent from MembersFragment
+        //get data from bundle sent from MembersFragment via navigation
         val memberId = MembersInfoFragmentArgs.fromBundle(requireArguments()).personNumber
         Timber.i(memberId.toString())
 
-        //pass data to viewmodel
+        //pass data to view model
         memberDetailViewModel.setPersonalNum(memberId)
         memberDetailViewModel.getCommentByNum(memberId)
         memberDetailViewModel.getRatingAvg(memberId)
@@ -79,50 +68,26 @@ class MembersInfoFragment : Fragment() {
             })
 
         //Add rating to room database on RatingBar change
-        memberDetailViewModel.member.observe(
-            viewLifecycleOwner, { member ->
-                member.let {
-                    binding.ratingBar1.setOnRatingBarChangeListener { p0, _, _ ->
-                        coroutineScope.launch {
-                            context?.let { it1 ->
-                                MemberDB.getInstance(it1).ratingDao.insert(
-                                    Rating(
-                                        personNum = member.personNumber,
-                                        numberOfStars = p0.rating
-                                    )
-                                )
-                            }
-                        }
-                    }
-                }
-            })
+        binding.ratingBar1.setOnRatingBarChangeListener { p0, _, _ ->
+            memberDetailViewModel.insertRating(memberId, p0.rating)
+        }
+
 
         //Add comment to room data base with person number of the member accordingly
-        memberDetailViewModel.member.observe(
-            viewLifecycleOwner, { member ->
-                member.let {
-                    binding.submitButton.setOnClickListener {
-                        coroutineScope.launch {
-                            context?.let { it1 ->
-                                MemberDB.getInstance(it1).commentDao.insert(
-                                    Comment(
-                                        personNum = member.personNumber,
-                                        comment = binding.commentEditText.text.toString()
-                                    )
-                                )
-                            }
-                        }
-                        //hide keyboard and make edit text 's text null after submit comment
-                        val imm: InputMethodManager =
-                            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        imm.hideSoftInputFromWindow(
-                            activity?.currentFocus?.windowToken, 0
-                        )
-                        binding.commentEditText.text = null
-                    }
-                }
-            }
-        )
+        binding.submitButton.setOnClickListener {
+            memberDetailViewModel.insertComment(
+                memberId,
+                binding.commentEditText.text.toString()
+            )
+
+            //hide keyboard and make edit text 's text null after submit comment
+            val imm: InputMethodManager =
+                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(
+                activity?.currentFocus?.windowToken, 0
+            )
+            binding.commentEditText.text = null
+        }
 
         //bind name, constituency, age and party info of each member
         memberDetailViewModel.member.observe(

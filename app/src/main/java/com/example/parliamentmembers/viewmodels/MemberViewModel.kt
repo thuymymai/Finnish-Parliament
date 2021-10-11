@@ -25,7 +25,7 @@ class MemberViewModel(application: Application) :
         get() = _member
 
     //this function take data passed from Party Fragment as para
-    //I call it in the Fragment to pass data to this viewmodel to get member by party in repo
+    //I call it in the Fragment to pass data to this view model to get member by party in repo
     private lateinit var party: String
     fun setParty(newParty: String) {
         party = newParty

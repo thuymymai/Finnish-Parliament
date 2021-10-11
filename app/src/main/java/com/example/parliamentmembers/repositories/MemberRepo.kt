@@ -45,6 +45,30 @@ class MemberRepo(val context: Context) {
         }
     }
 
+    //add Rating to room database
+    fun addRating(personNum: Int, rating: Float){
+        coroutineScope.launch {
+            ratingDao.insert(
+                Rating(
+                    personNum = personNum,
+                    numberOfStars = rating
+                )
+            )
+        }
+    }
+
+    //add comment to room database
+    fun addComment(personNum: Int, comment: String){
+        coroutineScope.launch {
+            commentDao.insert(
+                Comment(
+                    personNum = personNum,
+                    comment = comment
+                )
+            )
+        }
+    }
+
     //get data from DAOs
     fun getMemberByPersonNum(key: Int): LiveData<ParliamentMember> = memberDao.getByPersonNum(key)
     fun getMemberByParty(key: String): LiveData<List<ParliamentMember>> = memberDao.getByParty(key)

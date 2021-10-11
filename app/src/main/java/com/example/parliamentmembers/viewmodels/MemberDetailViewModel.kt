@@ -5,9 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.parliamentmembers.repositories.MemberRepo
 import com.example.parliamentmembers.roomdb.Comment
-import com.example.parliamentmembers.roomdb.MemberDB
 import com.example.parliamentmembers.roomdb.ParliamentMember
-import kotlinx.coroutines.launch
 
 /*Name: My Mai, student ID: 2012197
 ViewModel get data from repository as a
@@ -33,11 +31,19 @@ class MemberDetailViewModel(application: Application) :
         _member = repo.getMemberByPersonNum(newNum)
     }
 
-    fun getCommentByNum(memNum: Int) {
-        _comment = repo.getCommentByPersonNum(memNum)
+    fun insertRating(personNum: Int, rating: Float) {
+        repo.addRating(personNum, rating)
+    }
+
+    fun insertComment(personNum: Int, comment: String) {
+        repo.addComment(personNum, comment)
     }
 
     fun getRatingAvg(memNum: Int) {
         _ratingAvg = repo.getRatingAvgByPersonNum(memNum)
+    }
+
+    fun getCommentByNum(memNum: Int) {
+        _comment = repo.getCommentByPersonNum(memNum)
     }
 }

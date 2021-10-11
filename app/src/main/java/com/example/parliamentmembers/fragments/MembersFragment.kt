@@ -31,7 +31,7 @@ class MembersFragment : Fragment() {
             inflater,
             R.layout.fragment_2, container, false
         )
-        //create instance of viewmodel
+        //create instance of view model
         val memberViewModel =
             ViewModelProvider(
                 this
@@ -46,7 +46,7 @@ class MembersFragment : Fragment() {
         })
         binding.memberList.adapter = adapter
 
-        //get bundle from PartyFragment and pass to Viewmodel
+        //get bundle from PartyFragment and pass to View model
         val party = MembersFragmentArgs.fromBundle(requireArguments()).party
         memberViewModel.setParty(party)
 

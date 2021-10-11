@@ -18,8 +18,7 @@ import com.example.parliamentmembers.viewmodels.PartyViewModel
 /*Name: My Mai, student ID: 2012197
 This Fragment observes the changes in the LiveData object of PartyViewModel
 From that update adapter for list of parties sorted from database
-Basically it does not hold and business logic and data
-Only data binding and navigation logic
+Basically it has business logic and binding
 Date: 04/10/2021
 */
 
@@ -33,7 +32,7 @@ class PartyFragment : Fragment() {
             R.layout.fragment_1, container, false
         )
 
-        //create instance of viewmodel
+        //create instance of view model
         val partyViewModel =
             ViewModelProvider(
                 this
