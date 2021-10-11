@@ -5,6 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/*Name: My Mai, student ID: 2012197
+Database singleton class
+Date: 29/09/2021
+*/
+
 @Database(version = 8, entities = [(ParliamentMember::class), (Rating::class), (Comment::class)], exportSchema = true)
 abstract class MemberDB : RoomDatabase() {
 

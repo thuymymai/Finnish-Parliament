@@ -10,12 +10,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_height="180dp"
-            android:src="@drawable/parliament" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:contentDescription="@string/contentDescription"
+        android:src="@drawable/parliament" />
 
         <TextView
             android:layout_width="match_parent"
@@ -30,6 +31,8 @@
             android:paddingRight="20dp"
             android:text="@string/about"
             android:textColor="#44454A"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            tools:targetApi="o" />
+
     </LinearLayout>
 </FrameLayout>

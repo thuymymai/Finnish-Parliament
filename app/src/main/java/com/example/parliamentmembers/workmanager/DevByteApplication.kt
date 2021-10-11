@@ -9,6 +9,13 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+
+/*Name: My Mai, student ID: 2012197
+This class contains WorkRequest, constraints
+and schedule the task using enqueue methods.
+Date: 07/10/2021
+*/
+
 class DevByteApplication : Application() {
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 

@@ -3,6 +3,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
+/*Name: My Mai, student ID: 2012197
+Data class Entity of Room DB for storing Parliament Member
+Date: 29/09/2021
+*/
 
 @Entity(tableName = "parliament_members_table")
 data class ParliamentMember(

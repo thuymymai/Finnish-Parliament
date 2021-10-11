@@ -7,9 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembers.R
 import com.example.parliamentmembers.databinding.ListItemPartyBinding
-import kotlinx.android.synthetic.main.list_item_party.*
 
-class PartyAdapter(val clickListener: PartyListListener) :
+/*Name: My Mai, student ID: 2012197
+This class is adapter for recyclerview
+to display list of string parties
+Date: 05/10/2021
+*/
+
+class PartyAdapter(private val clickListener: PartyListListener) :
     ListAdapter<String, PartyAdapter.ViewHolder>(PartyDiffCallback()) {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val party = getItem(position)
@@ -26,30 +31,48 @@ class PartyAdapter(val clickListener: PartyListListener) :
     class ViewHolder private constructor(val binding: ListItemPartyBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String, clickListener: PartyListListener) {
-            //binding.partyName.text = item
             binding.clickListener = clickListener
             binding.apply {
                 when (item) {
-                    "sd" -> {partyImage.setImageResource(R.drawable.sd)
-                    partyName.setText(R.string.sd)}
-                    "ps" -> {partyImage.setImageResource(R.drawable.ps)
-                    partyName.setText(R.string.ps)}
-                    "kd" -> {partyImage.setImageResource(R.drawable.kd)
-                    partyName.setText(R.string.kd)}
-                    "kesk" -> {partyImage.setImageResource(R.drawable.kesk)
-                    partyName.setText(R.string.kesk)}
-                    "kok" -> {partyImage.setImageResource(R.drawable.kok)
-                    partyName.setText(R.string.kok)}
-                    "r" -> {partyImage.setImageResource(R.drawable.r)
-                    partyName.setText(R.string.r)}
-                    "vas" -> {partyImage.setImageResource(R.drawable.vas)
-                    partyName.setText(R.string.vas)}
-                    "vihr" -> {partyImage.setImageResource(R.drawable.vihr)
-                    partyName.setText(R.string.vihr)}
-                    "liik" -> {partyImage.setImageResource(R.drawable.liik)
-                    partyName.setText(R.string.liik)}
+                    "sd" -> {
+                        partyImage.setImageResource(R.drawable.sd)
+                        partyName.setText(R.string.sd)
+                    }
+                    "ps" -> {
+                        partyImage.setImageResource(R.drawable.ps)
+                        partyName.setText(R.string.ps)
+                    }
+                    "kd" -> {
+                        partyImage.setImageResource(R.drawable.kd)
+                        partyName.setText(R.string.kd)
+                    }
+                    "kesk" -> {
+                        partyImage.setImageResource(R.drawable.kesk)
+                        partyName.setText(R.string.kesk)
+                    }
+                    "kok" -> {
+                        partyImage.setImageResource(R.drawable.kok)
+                        partyName.setText(R.string.kok)
+                    }
+                    "r" -> {
+                        partyImage.setImageResource(R.drawable.r)
+                        partyName.setText(R.string.r)
+                    }
+                    "vas" -> {
+                        partyImage.setImageResource(R.drawable.vas)
+                        partyName.setText(R.string.vas)
+                    }
+                    "vihr" -> {
+                        partyImage.setImageResource(R.drawable.vihr)
+                        partyName.setText(R.string.vihr)
+                    }
+                    "liik" -> {
+                        partyImage.setImageResource(R.drawable.liik)
+                        partyName.setText(R.string.liik)
+                    }
 
                 }
+                invalidateAll()
             }
             binding.executePendingBindings()
         }

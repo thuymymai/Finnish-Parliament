@@ -1,26 +1,23 @@
 package com.example.parliamentmembers.adapters
 
-import android.app.Activity
-import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.parliamentmembers.databinding.ListItemMembersBinding
-import com.example.parliamentmembers.fragments.MembersFragment
 import com.example.parliamentmembers.roomdb.ParliamentMember
-import com.example.parliamentmembers.util.MyApp
-import java.util.*
-import kotlin.collections.ArrayList
 
-class MemberAdapter(val clickListener: MemberListListener) :
-    ListAdapter<ParliamentMember, MemberAdapter.ViewHolder>(MemberDiffCallback()){
+/*Name: My Mai, student ID: 2012197
+This class is adapter for recyclerview
+to display list of members of each party
+Date: 05/10/2021
+*/
+
+class MemberAdapter(private val clickListener: MemberListListener) :
+    ListAdapter<ParliamentMember, MemberAdapter.ViewHolder>(MemberDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position), clickListener)

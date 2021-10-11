@@ -3,6 +3,11 @@ package com.example.parliamentmembers.roomdb
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+/*Name: My Mai, student ID: 2012197
+Database DAO have all queries for 3 different data tables in ROOM DB
+Date: 29/09/2021
+*/
+
 @Dao
 interface MemberDao {
 
@@ -36,9 +41,6 @@ interface RatingDao {
     @Insert
     fun insert(rating: Rating)
 
-    /*@Query("SELECT * FROM rating_table where id == :key")
-    fun getAllRatings(key: Long): Rating*/
-
     @Query("SELECT * FROM rating_table where personNum == :key")
     fun getByPersonNum(key: Int): LiveData<Rating>
 
@@ -53,7 +55,4 @@ interface CommentDao {
 
     @Query("SELECT * FROM comment_table where personNum == :key")
     fun getCommentByPersonNum(key: Int): LiveData<List<Comment>>
-
-    @Delete
-    fun deleteComment(comment: Comment)
 }

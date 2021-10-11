@@ -4,9 +4,14 @@ import com.example.parliamentmembers.util.Constants.Companion.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
+/*Name: My Mai, student ID: 2012197
+This object declaration is for singleton of object Retrofit
+with set up of Moshi converter
+Date: 29/09/2021
+*/
 
 object RetrofitInstance {
 
@@ -22,6 +27,7 @@ object RetrofitInstance {
             .build()
     }
 
+    //public singleton object
     val api: MemberApiService by lazy {
         retrofit.create(MemberApiService::class.java)
     }

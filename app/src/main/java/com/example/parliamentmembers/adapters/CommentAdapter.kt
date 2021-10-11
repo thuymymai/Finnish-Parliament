@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembers.databinding.ListCommentsBinding
-import com.example.parliamentmembers.databinding.ListItemMembersBinding
 import com.example.parliamentmembers.roomdb.Comment
-import com.example.parliamentmembers.roomdb.ParliamentMember
 
-class CommentAdapter: ListAdapter<Comment, CommentAdapter.ViewHolder>(CommentDiffCallback()) {
+/*Name: My Mai, student ID: 2012197
+This class is adapter for recyclerview
+to display list of comments for each member
+Date: 07/10/2021
+*/
+
+class CommentAdapter : ListAdapter<Comment, CommentAdapter.ViewHolder>(CommentDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
